@@ -7,9 +7,10 @@
 
 ## How to build
 cd "project-folder"
-docker build -t fairness-llm .
+docker build -t llm_fairness .
 
 ## How to run
 docker run --rm \
   -e OLLAMA_HOST=http://host.docker.internal:11434 \
-  fairness-llm
+  llm_fairness
+   
