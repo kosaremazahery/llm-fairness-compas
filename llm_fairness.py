@@ -1,12 +1,12 @@
+from typing import Callable
 import ollama
 
-def llm(prompt: str, model: str = "mistral", max_tokens: int = 500) -> str:
-    """
-    Simple wrapper around a local Ollama model.
-    """
-    response = ollama.chat(
-        model=model,
-        messages=[{"role": "user", "content": prompt}]
-    )
-    # Ollama returns a dict with 'message': {'role': ..., 'content': ...}
-    return response["message"]["content"]
+
+def make_ollama_llm(model_name: str = "mistral") -> Callable[[str], str]:
+    def _llm(prompt: str, max_tokens: int = 800) -> str:
+        resp = ollama.chat(
+            model=model_name,
+            messages=[{"role": "user", "content": prompt}]
+        )
+        return resp["message"]["content"]
+    return _llm

@@ -10,7 +10,8 @@ Here are the dataset columns:
 {cols}
 
 Task:
-- Identify which of these are sensitive attributes
+- Identify which of these are sensitive attributes. You MUST NOT mark outcome variables (like labels) or behaviour counts (e.g. priors, number of arrests) as sensitive attributes.
+Focus on human characteristics and social categories only.
   (e.g., race, gender, age, nationality, religion, disability, income).
 - Rank the attributes based on their importance. Use your domain knowledge.
 - Return ONLY a comma-separated list of column names.
@@ -106,3 +107,6 @@ Task:
 Answer in clean paragraphs. 
 """
     return llm(prompt, max_tokens=700)
+
+
+

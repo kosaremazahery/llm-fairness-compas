@@ -1,7 +1,7 @@
 # main.py
 
 import pandas as pd
-from llm_fairness import llm
+from llm_fairness import make_ollama_llm
 from pipeline import fairness_analysis  # we'll create this
 
 def load_dataset(path):
@@ -12,11 +12,11 @@ def main():
     # 0) Load data
     df = load_dataset("compas-scores-two-years_v1.csv")
 
-    # 1) Run your automated fairness assistant
+    # 1) Run your automated fairness assistantخ
     result = fairness_analysis(
         df=df,
         target_col="two_year_recid",
-        llm=llm  # this is the Ollama-based function
+        llm=make_ollama_llm("llama3.1")  # this is the Ollama-based function
     )
 
     # 2) Print / save results
